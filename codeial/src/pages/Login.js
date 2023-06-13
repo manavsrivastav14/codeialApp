@@ -1,5 +1,7 @@
+import styles from '../styles/login.module.css';
+
 const Login = () => {
-  return <h1>Login</h1>;
+  return <form className={styles.loginForm}></form>;
 };
 
 export default Login;
