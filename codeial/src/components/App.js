@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { getPosts } from '../api';
 import { Home, Login } from '../pages';
@@ -41,24 +41,26 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <Router>
-        <Route path="/">
-          <Home posts={posts} />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/user/asdasd">
-          <UserInfo />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Navbar />
+        <Switch>
+          <Route path="/">
+            <Home posts={posts} />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/user/asdasd">
+            <UserInfo />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Page404 />
+          </Route>
+        </Switch>
       </Router>
-      <Route path="/">
-        <Page404 />
-      </Route>
     </div>
   );
 }
