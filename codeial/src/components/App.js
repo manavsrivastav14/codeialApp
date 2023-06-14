@@ -44,19 +44,23 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Home posts={posts} />
           </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/user/asdasd">
-            <UserInfo />
-          </Route>
-          <Route path="/login">
+
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/">
+
+          <Route exact path="/about">
+            <About />
+          </Route>
+
+          <Route exact path="/user/asdasd">
+            <UserInfo />
+          </Route>
+
+          <Route>
             <Page404 />
           </Route>
         </Switch>

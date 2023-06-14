@@ -1,5 +1,5 @@
-import styles from '../styles/navbar.module.css';
 import { Link } from 'react-router-dom';
+import styles from '../styles/navbar.module.css';
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
             alt=""
             src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
           />
-        </a>
+        </Link>
       </div>
 
       <div className={styles.rightNav}>
@@ -28,13 +28,13 @@ const Navbar = () => {
         <div className={styles.navLinks}>
           <ul>
             <li>
-              <Link to="/login">Log in</a>
+              <Link to="/login">Log in</Link>
             </li>
             <li>
-              <Link to="/">Log out</a>
+              <a href="/">Log out</a>
             </li>
             <li>
-              <Link to="/">Register</a>
+              <a href="/">Register</a>
             </li>
           </ul>
         </div>
