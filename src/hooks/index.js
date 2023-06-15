@@ -72,7 +72,7 @@ export const useProvideAuth = () => {
       setUser(response.data.user);
       setItemInLocalStorage(
         LOCALSTORAGE_TOKEN_KEY,
-        response.data.user ? response.data.user : null
+        response.data.token ? response.data.token : null
       );
       return {
         success: true,
