@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
-import { Home, Login, Signup, Settings } from '../pages';
+import { Home, Login, Signup, Settings, UserProfile } from '../pages';
 import { Loader, Navbar } from './';
 
 function PrivateRoute({ children, ...rest }) {
@@ -55,6 +55,10 @@ function App() {
 
           <PrivateRoute exact path="/settings">
             <Settings />
+          </PrivateRoute>
+
+          <PrivateRoute exact path="/user/:userId">
+            <UserProfile />
           </PrivateRoute>
 
           <Route>
