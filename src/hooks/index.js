@@ -114,23 +114,23 @@ export const useProvideAuth = () => {
         friends: [...user.friends, friend],
       });
       return;
-    } else {
-      let friends = [...user.friends];
-      friends.remove(friend);
-      setUser({
-        ...user,
-        friends,
-      });
     }
+    const newFriends = user.friends.filter(
+      (friend) => friend.to_user._id !== friend.to_user._id
+    );
+    setUser({
+      ...user,
+      friends: newFriends,
+    });
   };
+};
 
-  return {
-    user,
-    login,
-    logout,
-    loading,
-    signup,
-    updateUser,
-    updateUserFriends,
-  };
+return {
+  user,
+  login,
+  logout,
+  loading,
+  signup,
+  updateUser,
+  updateUserFriends,
 };
