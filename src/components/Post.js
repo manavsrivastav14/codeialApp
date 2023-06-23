@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
-import { createComment } from '../api';
+import { createComment, toggleLike } from '../api';
 import { usePosts } from '../hooks';
 import styles from '../styles/home.module.css';
 import { Comment } from './index';
@@ -21,17 +21,25 @@ const Post = ({ post }) => {
       const response = await createComment(comment, post._id);
 
       if (response.success) {
-        setComment('');
-        posts.addComment(response.data.comment, post._id);
-        addToast('Comment Added Successfully', {
-          appearance: 'success',
-        });
+        if (response.data.deleted) {
+          addToast('Like removed successfully', {
+            appearance: 'success',
+          });
+        } else {
+          addToast('Like removed successfully', {
+            appearance: 'success',
+          });
+        }
       } else {
         addToast(response.message, {
           appearance: 'error',
         });
       }
     }
+  };
+
+  const handlePostLikeClick = async () => {
+    const response = await toggleLike(post._id, 'Post');
   };
 
   <div className={styles.postWrapper} key={`post-${post._id}`}>
@@ -60,10 +68,13 @@ const Post = ({ post }) => {
 
       <div className={styles.postActions}>
         <div className={styles.postLike}>
-          <img
-            src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
-            alt="likes-icon"
-          />
+          <button onClick={handlePostLikeClick}>
+            <img
+              src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
+              alt="likes-icon"
+            />
+          </button>
+
           <span>{post.likes.length}</span>
         </div>
 
